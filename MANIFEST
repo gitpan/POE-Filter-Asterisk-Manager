@@ -3,3 +3,4 @@ Changes
 README
 MANIFEST
 Makefile.PL
+t/1.t

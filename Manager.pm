@@ -2,7 +2,7 @@ package POE::Filter::Asterisk::Manager;
 
 use strict;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 sub DEBUG { 0 };
 
@@ -166,9 +166,16 @@ since Asterisk has only been used on linux.
 
 Probably
 
-=head1 AUTHORS & COPYRIGHTS
+=head1 AUTHOR
 
-David Davis. (xantus [at] teknikill.net) (xantus on irc.perl.org)
+David Davis. E<lt>xantus@cpan.orgE<gt> (xantus on irc.perl.org)
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright 2003 by David Davis and Teknikill Software
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
 
 Please see L<POE> for more information about authors and contributors.
 

@@ -1,5 +1,3 @@
-# -*- cperl -*-
-
 use ExtUtils::MakeMaker;
 use strict;
 
