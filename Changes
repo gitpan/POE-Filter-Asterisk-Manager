@@ -1,7 +1,8 @@
 Revision history for Perl extension POE::Filter::Asterisk::Manager
 
+0.02 Tue Feb 10 21:05:18 PDT 2003
+	- Fixed the docs up a little
+	- Added require test
+
 0.01 Thu Sep 04 13:54:00 PDT 2003
 	- First externally released version.
-
-0.02 Mon Nov 24 10:51:00 PDT 2003
-	- Added use tests and changed my email to the cpan email address

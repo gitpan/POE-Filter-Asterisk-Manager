@@ -1,8 +1,9 @@
 package POE::Filter::Asterisk::Manager;
 
 use strict;
+use Carp qw(croak);
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 sub DEBUG { 0 };
 
@@ -102,11 +103,11 @@ sub put {
 				push(@raw,"$k: $hrefs->[$i]{$k}$self->{crlf}");
 			}
 		} elsif (ref($hrefs->[$i]) eq 'ARRAY') {
-			push(@raw, join("$self->{crlf}", @$hrefs->[$i], ""));
+			push(@raw, join("$self->{crlf}", @{$hrefs->[$i]}, ""));
 		} elsif (ref($hrefs->[$i]) eq 'SCALAR') {
 			push(@raw, $hrefs->[$i]);
 		} else {
-			print STDERR "unknown type ".ref($hrefs->[$i])." passed to ".__PACKAGE__."->put()";
+			croak "unknown type ".ref($hrefs->[$i])." passed to ".__PACKAGE__."->put()";
 		}
 		push(@raw,"$self->{crlf}");
 	}
@@ -132,11 +133,9 @@ POE::Filter::Asterisk::Manager - convert stream to hashref, and hashref to strea
 
 =head1 SYNOPSIS
 
-  $httpd = POE::Filter::Asterisk::Manager->new();
-  $arrayref_with_http_response_as_string =
-    $httpd->put($full_http_response_object);
-  $arrayref_with_http_request_object =
-    $line->get($arrayref_of_raw_data_chunks_from_driver);
+  $msg = POE::Filter::Asterisk::Manager->new();
+  $array_ref_of_hash_refs = $msg->put($hash_ref);
+  $array_ref_of_hash_refs = $msg->get($array_ref_of_raw_chunks_from_driver);
 
 =head1 DESCRIPTION
 
@@ -155,27 +154,9 @@ POE::Filter.
 The SEE ALSO section in L<POE> contains a table of contents covering
 the entire POE distribution.
 
-=head1 TODO
+=head1 AUTHORS & COPYRIGHTS
 
-=item *
-
-Add crlf detection.  I'm not sure if this is really needed though
-since Asterisk has only been used on linux.
-
-=head1 BUGS
-
-Probably
-
-=head1 AUTHOR
-
-David Davis. E<lt>xantus@cpan.orgE<gt> (xantus on irc.perl.org)
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright 2003 by David Davis and Teknikill Software
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+David Davis. xantus@cpan.org (xantus on irc.perl.org)
 
 Please see L<POE> for more information about authors and contributors.
 
